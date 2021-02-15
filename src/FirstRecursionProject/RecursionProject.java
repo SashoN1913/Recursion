@@ -52,6 +52,65 @@ public class RecursionProject
 		}
 		
 	}
+	
+	public static boolean binarySearch(int[] arr, int start, int end, int search)
+	{
+		int middle = (start + end) / 2;
+		
+		if(end < start)
+		{
+			return false;
+		}
+		
+		if(arr[middle] == search)
+		{
+			return true;
+		}
+		
+		if(search > arr[middle])
+		{
+			return binarySearch(arr, start, middle - 1, search);
+		}
+		if(search > arr[middle])
+		{
+			return binarySearch(arr, middle + 1, end, search);
+		}
+		
+		return false;
+	}
+	
+	public static int gcdOfNumbers(int firstNumber, int secondNumber)
+	{
+		if(firstNumber == 0)
+		{
+			return secondNumber;		
+		}
+		
+		if(secondNumber == 0)
+		{
+			return firstNumber;
+		}
+		
+		if(firstNumber < secondNumber)
+		{
+			return gcdOfNumbers(firstNumber, secondNumber % firstNumber);
+		}
+		
+		return gcdOfNumbers(secondNumber, firstNumber % secondNumber);
+	}
+	
+	public static int gcdOfNumbersArray(int[] arr, int current, int index)
+	{
+		if(index >= (arr.length - 1))
+		{
+			return gcdOfNumbers(current, arr[index]);
+		}
+		
+		current = gcdOfNumbers(current, arr[index]);
+		
+		return gcdOfNumbersArray(arr, current, index + 1);
+		
+	}
 	public static void main(String[] args) 
 	{
 		int n = 15;
@@ -63,7 +122,16 @@ public class RecursionProject
 		digitsOfNumberFromLeft(n);
 		System.out.println("Fourth excercise");
 		digitsOfNumberFromRight(n);
-		
+		System.out.println("Fifth excercise");
+		numbersInRow(n);
+		System.out.println("Sixth excercise");
+		System.out.println(binarySearch(new int[] { 3, 4, 5}, 0, 4, 5));
+		System.out.println(binarySearch(new int[] { 3, 4, 6}, 0, 4, 5));
+		System.out.println("Seventh excercise");
+		System.out.println(gcdOfNumbers(25, 60));
+		System.out.println("Eighth excercise");
+		int[] arr = new int[] {35, 45, 85, 90};
+		System.out.println(gcdOfNumbersArray(arr, arr[2], 2));
 		
 	}
 		
