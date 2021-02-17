@@ -44,12 +44,18 @@ public class RecursionProject
 		digitsOfNumberFromLeft(n / 10);
 	}
 	
-	public static void numbersInRow(int n)
+	public static void numbersInRow(int n, int k)
 	{
-		if(n < 1)
+		if(n == k)
 		{
+			System.out.print(Math.pow(10, k) + " ");
+			System.out.print(Math.pow(10, k) + " ");
 			return;
 		}
+		
+		System.out.print(Math.pow(10, k) + " ");
+		numbersInRow(n, k + 1);
+		System.out.print(Math.pow(10, k) + " ");
 		
 	}
 	
@@ -123,7 +129,8 @@ public class RecursionProject
 		System.out.println("Fourth excercise");
 		digitsOfNumberFromRight(n);
 		System.out.println("Fifth excercise");
-		numbersInRow(n);
+		numbersInRow(5, 1);
+		System.out.println();
 		System.out.println("Sixth excercise");
 		System.out.println(binarySearch(new int[] { 3, 4, 5}, 0, 4, 5));
 		System.out.println(binarySearch(new int[] { 3, 4, 6}, 0, 4, 5));
